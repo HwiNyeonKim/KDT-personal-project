@@ -11,22 +11,13 @@ import javax.sql.DataSource;
 import java.sql.Timestamp;
 import java.util.*;
 
+import static com.example.cccoffeebackendfromatoz.repository.CommonSQL.*;
 import static com.example.cccoffeebackendfromatoz.utils.UuidUitls.toUUID;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
 	private final NamedParameterJdbcTemplate jdbcTemplate;
 	private final String productTable;
-
-	// SQL stmt
-	private static final String SQL_SELECT_ALL = "SELECT * FROM %s";
-	private static final String SQL_SELECT_BY_ID = "SELECT * FROM %s WHERE product_id = UUID_TO_BIN(:productId)";
-	private static final String SQL_SELECT_BY_CONDITION = "SELECT * FROM %s WHERE %s = :%s"; // category, product_name
-	private static final String SQL_SELECT_BY_RANGE_CONDITION = "SELECT * FROM %s WHERE %s BETWEEN :%s and :%s";
-	private static final String SQL_INSERT_PRODUCT =
-			"INSERT INTO %s(product_id, product_name, category, price, description, created_at, updated_at) VALUES (UUID_TO_BIN(:productId), :productName, :category, :price, :description, :createdAt, :updatedAt)";
-	private static final String SQL_DELETE_BY_ID = "DELETE FROM %s WHERE product_id = UUID_TO_BIN(:productId)";
-	private static final String SQL_DELETE_ALL = "DELETE FROM %s";
 
 	public ProductRepositoryImpl(DataSource dataSource, String productTable) {
 		jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
@@ -74,7 +65,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 	@Override
 	public List<Product> findById(UUID productId) {
-		return jdbcTemplate.query(SQL_SELECT_BY_ID.formatted(productTable),
+		return jdbcTemplate.query(SQL_SELECT_BY_ID.formatted(productTable, "product_id", "productId"),
 				Collections.singletonMap("productId", productId.toString().getBytes()),
 				productRowMapper);
 	}
@@ -92,9 +83,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 	@Override
 	public void deleteProduct(UUID productId) {
-		jdbcTemplate.update(SQL_DELETE_BY_ID.formatted(productTable),
-				Collections.singletonMap("productId", productId.toString().getBytes())
-		);
+		jdbcTemplate.update(SQL_DELETE_BY_ID.formatted(productTable, "product_id", "productId"),
+				Collections.singletonMap("productId", productId.toString().getBytes()));
 	}
 
 	@Override
@@ -102,7 +92,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 		jdbcTemplate.update(SQL_DELETE_ALL.formatted(productTable), Collections.emptyMap());
 	}
 
-	private static final RowMapper<Product> productRowMapper = (resultSet, i) -> {
+	private final RowMapper<Product> productRowMapper = (resultSet, i) -> {
 		UUID productId = toUUID(resultSet.getBytes("product_id"));
 		String productName = resultSet.getString("product_name");
 		String category = resultSet.getString("category");

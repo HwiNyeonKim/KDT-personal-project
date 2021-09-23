@@ -22,10 +22,10 @@ public interface ProductService {
 	}
 	List<Product> getProductsCreatedBetween(Timestamp from, Timestamp to);
 	default List<Product> getProductsCreatedAfter(Timestamp from) {
-		return getProductsCreatedBetween(from, Timestamp.valueOf(LocalDateTime.MAX));
+		return getProductsCreatedBetween(from, Timestamp.valueOf("9999-12-31 23:59:59"));
 	}
 	default List<Product> getProductsCreatedBefore(Timestamp to) {
-		return getProductsCreatedBetween(Timestamp.valueOf(LocalDateTime.MIN), to);
+		return getProductsCreatedBetween(Timestamp.valueOf("1970-01-01 00:00:00"), to);
 	}
 	List<Product> getProductsByName(String productName);
 	List<Product> getProductById(UUID productId); // Optional vs List, 일단 편의상 List

@@ -16,7 +16,7 @@ public interface ProductRepository {
 	List<Product> findByName(String productName);
 	List<Product> findById(UUID productId);
 
-	// create product
+	// create a product
 	Product insert(Product product);
 
 	// delete product
