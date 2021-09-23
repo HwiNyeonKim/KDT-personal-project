@@ -3,6 +3,7 @@ package com.example.cccoffeebackendfromatoz.model;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -13,7 +14,7 @@ public class Product {
 	private long price;
 	private String description;
 	private final LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
+	private LocalDateTime lastModifiedAt;
 
 	public static class Builder {
 		private final UUID productId;
@@ -67,30 +68,36 @@ public class Product {
 		this.price = builder.price;
 		this.description = builder.description;
 		this.createdAt = builder.createdAt;
-		this.updatedAt = builder.updatedAt;
+		this.lastModifiedAt = builder.updatedAt;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-		setUpdatedAt(LocalDateTime.now());
+	private void setLastModifiedAt(LocalDateTime updatedAt) {
+		this.lastModifiedAt = updatedAt;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
-		setUpdatedAt(LocalDateTime.now());
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Product product = (Product) o;
+		return productId.equals(product.productId);
 	}
 
-	public void setPrice(long price) {
-		this.price = price;
-		setUpdatedAt(LocalDateTime.now());
+	@Override
+	public int hashCode() {
+		return Objects.hash(productId);
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-		setUpdatedAt(LocalDateTime.now());
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Product product = (Product) o;
+		return productId.equals(product.productId);
 	}
 
-	private void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
+	@Override
+	public int hashCode() {
+		return Objects.hash(productId);
 	}
 }
