@@ -30,11 +30,11 @@ public class Order {
 		private OrderStatus orderStatus;
 		private LocalDateTime lastModifiedAt;
 
-		public Builder(UUID productId, String email, List<OrderItem> orderItems, LocalDateTime createdAt) {
+		public Builder(UUID orderId, String email, List<OrderItem> orderItems, LocalDateTime createdAt) {
 			if (!ValidationUtils.validateEmail(email)) {
 				throw new RuntimeException("Invalid email");
 			}
-			this.orderId = productId;
+			this.orderId = orderId;
 			this.email = email;
 			this.orderItems = orderItems;
 			this.createdAt = createdAt;
@@ -50,7 +50,7 @@ public class Order {
 			return this;
 		}
 
-		public Builder OrderStatus(OrderStatus orderStatus) {
+		public Builder orderStatus(OrderStatus orderStatus) {
 			this.orderStatus = orderStatus;
 			return this;
 		}
