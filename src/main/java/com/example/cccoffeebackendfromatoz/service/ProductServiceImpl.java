@@ -60,6 +60,18 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public Product createProduct(String productName, Category category, long price, String description) {
+		Product product = new Product.Builder(UUID.randomUUID(), LocalDateTime.now())
+				.productName(productName)
+				.category(category)
+				.price(price)
+				.description(description)
+				.build();
+		return repository.insert(product);
+	}
+
+
+	@Override
 	public void deleteProduct(Product product) {
 		repository.deleteProduct(product);
 	}

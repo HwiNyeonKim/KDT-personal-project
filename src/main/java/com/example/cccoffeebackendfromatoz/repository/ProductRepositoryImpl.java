@@ -127,7 +127,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 		paramMap.put("price", product.getPrice());
 		paramMap.put("description", product.getDescription());
 		paramMap.put("createdAt", product.getCreatedAt());
-		paramMap.put("updatedAt", product.getUpdatedAt());
+		paramMap.put("updatedAt", product.getLastModifiedAt());
 		return paramMap;
 	}
 }
