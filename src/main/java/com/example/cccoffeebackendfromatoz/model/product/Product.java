@@ -1,4 +1,4 @@
-package com.example.cccoffeebackendfromatoz.model;
+package com.example.cccoffeebackendfromatoz.model.product;
 
 import lombok.Getter;
 

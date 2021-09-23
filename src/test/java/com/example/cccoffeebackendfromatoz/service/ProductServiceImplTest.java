@@ -1,15 +1,14 @@
 package com.example.cccoffeebackendfromatoz.service;
 
-import com.example.cccoffeebackendfromatoz.model.Category;
-import com.example.cccoffeebackendfromatoz.model.Product;
+import com.example.cccoffeebackendfromatoz.model.product.Category;
+import com.example.cccoffeebackendfromatoz.model.product.Product;
+import com.example.cccoffeebackendfromatoz.product.service.ProductService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

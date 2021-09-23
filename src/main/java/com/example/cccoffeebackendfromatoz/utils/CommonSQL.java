@@ -1,4 +1,4 @@
-package com.example.cccoffeebackendfromatoz.repository;
+package com.example.cccoffeebackendfromatoz.utils;
 
 public class CommonSQL {
 	public static String SQL_SELECT_ALL = "SELECT * FROM %s";

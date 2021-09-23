@@ -1,12 +1,10 @@
-package com.example.cccoffeebackendfromatoz.service;
+package com.example.cccoffeebackendfromatoz.product.service;
 
-import com.example.cccoffeebackendfromatoz.model.Category;
-import com.example.cccoffeebackendfromatoz.model.Product;
+import com.example.cccoffeebackendfromatoz.model.product.Category;
+import com.example.cccoffeebackendfromatoz.model.product.Product;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface ProductService {

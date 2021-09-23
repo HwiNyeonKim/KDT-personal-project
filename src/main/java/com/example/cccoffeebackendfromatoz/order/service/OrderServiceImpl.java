@@ -1,9 +1,9 @@
-package com.example.cccoffeebackendfromatoz.service;
+package com.example.cccoffeebackendfromatoz.order.service;
 
-import com.example.cccoffeebackendfromatoz.model.Order;
-import com.example.cccoffeebackendfromatoz.model.OrderItem;
-import com.example.cccoffeebackendfromatoz.model.OrderStatus;
-import com.example.cccoffeebackendfromatoz.repository.OrderRepository;
+import com.example.cccoffeebackendfromatoz.model.order.Order;
+import com.example.cccoffeebackendfromatoz.model.order.OrderItem;
+import com.example.cccoffeebackendfromatoz.model.order.OrderStatus;
+import com.example.cccoffeebackendfromatoz.order.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
