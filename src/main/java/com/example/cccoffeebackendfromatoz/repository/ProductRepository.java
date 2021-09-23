@@ -5,7 +5,6 @@ import com.example.cccoffeebackendfromatoz.model.Product;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface ProductRepository {
@@ -15,7 +14,7 @@ public interface ProductRepository {
 	List<Product> findByPrice(long priceMin, long priceMax);
 	List<Product> findByCreatedTime(Timestamp from, Timestamp to);
 	List<Product> findByName(String productName);
-	Optional<Product> findById(UUID productId);
+	List<Product> findById(UUID productId);
 
 	// create product
 	Product insert(Product product);
@@ -23,6 +22,7 @@ public interface ProductRepository {
 	// delete product
 	void deleteProduct(UUID productId);
 	default void deleteProduct(Product product) {
+		System.out.println("removing product of id : " + product.getProductId());
 		deleteProduct(product.getProductId());
 	}
 	void deleteAll();

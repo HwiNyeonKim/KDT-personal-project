@@ -3,6 +3,7 @@ package com.example.cccoffeebackendfromatoz.model;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -92,5 +93,18 @@ public class Product {
 
 	private void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Product product = (Product) o;
+		return productId.equals(product.productId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(productId);
 	}
 }

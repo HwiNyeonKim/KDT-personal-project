@@ -28,7 +28,7 @@ public interface ProductService {
 		return getProductsCreatedBetween(Timestamp.valueOf(LocalDateTime.MIN), to);
 	}
 	List<Product> getProductsByName(String productName);
-	Optional<Product> getProductById(UUID productId);
+	List<Product> getProductById(UUID productId); // Optional vs List, 일단 편의상 List
 
 	// create a product
 	Product createProduct(String productName, Category category, long price);
@@ -38,4 +38,7 @@ public interface ProductService {
 		return product;
 	}
 
+	// delete a product
+	void deleteProduct(Product product);
+	void deleteAll();
 }
