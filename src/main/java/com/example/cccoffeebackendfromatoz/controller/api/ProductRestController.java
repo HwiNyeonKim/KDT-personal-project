@@ -29,8 +29,8 @@ public class ProductRestController {
 	                                 @RequestParam Optional<String> productName,
 	                                 @RequestParam Optional<UUID> productId) {
 		// search with created date range condition
-		Timestamp createdDateTimeFrom = Timestamp.valueOf(createdDateFrom + "00:00:00");
-		Timestamp createdDateTimeTo = Timestamp.valueOf(createdDateTo + "23:59:59");
+		Timestamp createdDateTimeFrom = Timestamp.valueOf(createdDateFrom + " 00:00:00");
+		Timestamp createdDateTimeTo = Timestamp.valueOf(createdDateTo + " 23:59:59");
 		List<Product> products = service.getProductsCreatedBetween(createdDateTimeFrom, createdDateTimeTo);
 
 		// search with product name
