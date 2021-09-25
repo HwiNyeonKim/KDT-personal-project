@@ -22,7 +22,6 @@ public interface ProductRepository {
 	// delete product
 	void deleteProduct(UUID productId);
 	default void deleteProduct(Product product) {
-		System.out.println("removing product of id : " + product.getProductId());
 		deleteProduct(product.getProductId());
 	}
 	void deleteAll();

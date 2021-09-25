@@ -33,6 +33,9 @@ public interface ProductService {
 	Product createProduct(String productName, Category category, long price, String description);
 
 	// delete a product
-	void deleteProduct(Product product);
+	default void deleteProduct(Product product) {
+		deleteProduct(product.getProductId());
+	}
+	void deleteProduct(UUID productId);
 	void deleteAll();
 }

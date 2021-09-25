@@ -1,16 +1,13 @@
 package com.example.cccoffeebackendfromatoz.controller.api;
 
+import com.example.cccoffeebackendfromatoz.controller.dto.CreateProductRequest;
 import com.example.cccoffeebackendfromatoz.model.product.Category;
 import com.example.cccoffeebackendfromatoz.model.product.Product;
 import com.example.cccoffeebackendfromatoz.product.service.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 public class ProductRestController {
@@ -20,6 +17,7 @@ public class ProductRestController {
 		this.service = productService;
 	}
 
+	// Get product list to show.
 	@GetMapping("/api/v1/products")
 	public List<Product> productList(@RequestParam Optional<Category> category,
 	                                 @RequestParam Optional<Long> priceMin,
@@ -56,5 +54,43 @@ public class ProductRestController {
 		}
 
 		return products;
+	}
+
+
+	// Get a certain product information by product ID
+	@GetMapping("/api/v1/products/{productId}")
+	public Map<String, String> getCertainProduct(@PathVariable("productId") UUID productId) {
+		Map<String, String> result = new HashMap<>();
+
+		List<Product> productData = service.getProductById(productId);
+		if (productData.isEmpty()) {
+			return result;
+		}
+
+		Product product = productData.get(0);
+		result.put("productId", product.getProductId().toString());
+		result.put("productName", product.getProductName());
+		result.put("category", product.getCategory().toString());
+		result.put("price", String.valueOf(product.getPrice()));
+		result.put("description", product.getDescription());
+		result.put("createdAt", product.getCreatedAt().toString());
+		result.put("lastModifiedAt", product.getLastModifiedAt().toString());
+
+		return result;
+	}
+
+	// Create a product
+	@PostMapping("/api/v1/products")
+	public Product createProduct(@ModelAttribute("createProductRequest") CreateProductRequest createProductRequest) {
+		return service.createProduct(createProductRequest.productName(),
+				createProductRequest.category(),
+				createProductRequest.price(),
+				createProductRequest.description());
+	}
+
+	// Delete a product
+	@DeleteMapping("/api/v1/products/{productId}")
+	public void deleteProduct(@PathVariable("productId") UUID productId) {
+		service.deleteProduct(productId);
 	}
 }
