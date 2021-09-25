@@ -32,4 +32,7 @@ public interface OrderService {
 	}
 	void deleteOrder(UUID orderId);
 	void deleteAll();
+
+	// cancel order
+	void cancelOrder(Order order);
 }

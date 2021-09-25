@@ -7,6 +7,7 @@ import com.example.cccoffeebackendfromatoz.order.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -68,5 +69,28 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void deleteAll() {
 		repository.deleteAll();
+	}
+
+	@Override
+	public void cancelOrder(Order order) {
+		OrderStatus currentOrderStatus = order.getOrderStatus();
+		if (currentOrderStatus.equals(OrderStatus.CANCELLED)) {
+			throw new RuntimeException(
+					MessageFormat.format("This order has already been cancelled. (Order ID : {}, Last Modified At : {})",
+							order.getOrderId().toString(),
+							order.getLastModifiedAt().toString())
+			);
+		}
+
+		if (currentOrderStatus.equals(OrderStatus.SETTLED)) {
+			throw new RuntimeException(
+					MessageFormat.format("This order has already been settled. (Order ID : {}, Last Modified At : {}",
+					order.getOrderId().toString(),
+					order.getLastModifiedAt().toString())
+			);
+		}
+
+		// success cancellation.
+		order.setOrderStatus(OrderStatus.CANCELLED);
 	}
 }

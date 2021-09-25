@@ -76,6 +76,11 @@ public class Order {
 		this.lastModifiedAt = builder.lastModifiedAt;
 	}
 
+	// TODO: 어떻게 set method를 없애면서도 역할을 유지할 수 있을까?
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;

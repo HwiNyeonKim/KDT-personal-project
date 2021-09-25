@@ -126,7 +126,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
 	private Map<String, Object> toOrderParamMap(Order order) {
 		HashMap<String, Object> orderParamMap = new HashMap<>();
-		orderParamMap.put("orderId", order.getOrderId());
+		orderParamMap.put("orderId", order.getOrderId().toString().getBytes());
 		orderParamMap.put("email", order.getEmail());
 		orderParamMap.put("address", order.getAddress());
 		orderParamMap.put("postcode", order.getPostcode());
