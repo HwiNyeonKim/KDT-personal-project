@@ -46,7 +46,7 @@ public class ProductRestController {
 		// search with price range condition
 		long minPrice = priceMin.orElse(Long.MIN_VALUE);
 		long maxPrice = priceMax.orElse(Long.MAX_VALUE);
-		if (minPrice != Long.MIN_VALUE && maxPrice != Long.MAX_VALUE) {
+		if (minPrice != Long.MIN_VALUE || maxPrice != Long.MAX_VALUE) {
 			products = products.stream().filter(product -> minPrice <= product.getPrice() && product.getPrice() <= maxPrice).toList();
 		}
 
