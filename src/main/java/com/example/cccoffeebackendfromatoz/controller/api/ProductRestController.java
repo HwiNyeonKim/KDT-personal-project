@@ -5,13 +5,14 @@ import com.example.cccoffeebackendfromatoz.model.product.Category;
 import com.example.cccoffeebackendfromatoz.model.product.Product;
 import com.example.cccoffeebackendfromatoz.product.service.ProductService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.sql.Timestamp;
 import java.util.*;
 
 @RestController
 public class ProductRestController {
+	// TODO: Admin 페이지용으로 변경하기
+
 	private final ProductService service;
 
 	public ProductRestController(ProductService productService) {

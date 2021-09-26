@@ -75,7 +75,7 @@ public class OrderRestController {
 	// Cancel an order
 	@DeleteMapping("/api/v1/orders/{orderId}")
 	public void deleteOrder(@PathVariable("orderId") UUID orderId) {
-		// status만 변경. 내역은 유지
+		// 주문 상태만 변경. 내역은 유지
 		List<Order> order = service.getOrderById(orderId);
 		try {
 			service.cancelOrder(order.iterator().next());
