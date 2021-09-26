@@ -1,6 +1,6 @@
 package com.example.cccoffeebackendfromatoz.controller.dto;
 
-import com.example.cccoffeebackendfromatoz.model.order.OrderItem;
+import com.example.cccoffeebackendfromatoz.order.model.OrderItem;
 
 import java.util.List;
 

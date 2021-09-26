@@ -1,7 +1,7 @@
 package com.example.cccoffeebackendfromatoz.product.repository;
 
-import com.example.cccoffeebackendfromatoz.model.product.Category;
-import com.example.cccoffeebackendfromatoz.model.product.Product;
+import com.example.cccoffeebackendfromatoz.product.model.Category;
+import com.example.cccoffeebackendfromatoz.product.model.Product;
 import com.example.cccoffeebackendfromatoz.utils.TimeUtils;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

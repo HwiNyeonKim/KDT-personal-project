@@ -1,8 +1,8 @@
 package com.example.cccoffeebackendfromatoz.controller.api;
 
 import com.example.cccoffeebackendfromatoz.controller.dto.CreateProductRequest;
-import com.example.cccoffeebackendfromatoz.model.product.Category;
-import com.example.cccoffeebackendfromatoz.model.product.Product;
+import com.example.cccoffeebackendfromatoz.product.model.Category;
+import com.example.cccoffeebackendfromatoz.product.model.Product;
 import com.example.cccoffeebackendfromatoz.product.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 

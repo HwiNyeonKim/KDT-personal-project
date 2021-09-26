@@ -1,9 +1,9 @@
 package com.example.cccoffeebackendfromatoz.order.repository;
 
-import com.example.cccoffeebackendfromatoz.model.product.Category;
-import com.example.cccoffeebackendfromatoz.model.order.Order;
-import com.example.cccoffeebackendfromatoz.model.order.OrderItem;
-import com.example.cccoffeebackendfromatoz.model.order.OrderStatus;
+import com.example.cccoffeebackendfromatoz.product.model.Category;
+import com.example.cccoffeebackendfromatoz.order.model.Order;
+import com.example.cccoffeebackendfromatoz.order.model.OrderItem;
+import com.example.cccoffeebackendfromatoz.order.model.OrderStatus;
 import com.example.cccoffeebackendfromatoz.utils.TimeUtils;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

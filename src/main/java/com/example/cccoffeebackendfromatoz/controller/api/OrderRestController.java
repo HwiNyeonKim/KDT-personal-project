@@ -1,7 +1,7 @@
 package com.example.cccoffeebackendfromatoz.controller.api;
 
 import com.example.cccoffeebackendfromatoz.controller.dto.CreateOrderRequest;
-import com.example.cccoffeebackendfromatoz.model.order.Order;
+import com.example.cccoffeebackendfromatoz.order.model.Order;
 import com.example.cccoffeebackendfromatoz.order.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 

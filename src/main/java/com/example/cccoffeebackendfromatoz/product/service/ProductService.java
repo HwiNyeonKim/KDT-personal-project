@@ -1,7 +1,7 @@
 package com.example.cccoffeebackendfromatoz.product.service;
 
-import com.example.cccoffeebackendfromatoz.model.product.Category;
-import com.example.cccoffeebackendfromatoz.model.product.Product;
+import com.example.cccoffeebackendfromatoz.product.model.Category;
+import com.example.cccoffeebackendfromatoz.product.model.Product;
 
 import java.sql.Timestamp;
 import java.util.List;

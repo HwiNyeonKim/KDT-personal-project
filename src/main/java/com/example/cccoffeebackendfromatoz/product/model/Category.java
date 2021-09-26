@@ -1,4 +1,4 @@
-package com.example.cccoffeebackendfromatoz.model.product;
+package com.example.cccoffeebackendfromatoz.product.model;
 
 public enum Category {
 	UNCATEGORIZED,

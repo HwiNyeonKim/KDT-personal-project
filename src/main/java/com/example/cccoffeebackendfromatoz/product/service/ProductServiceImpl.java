@@ -1,7 +1,7 @@
 package com.example.cccoffeebackendfromatoz.product.service;
 
-import com.example.cccoffeebackendfromatoz.model.product.Category;
-import com.example.cccoffeebackendfromatoz.model.product.Product;
+import com.example.cccoffeebackendfromatoz.product.model.Category;
+import com.example.cccoffeebackendfromatoz.product.model.Product;
 import com.example.cccoffeebackendfromatoz.product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -84,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
 	public Optional<Product> changeDescription(Product product, String newDescription) {
 		return repository.updateDescription(product, newDescription);
 	}
-	
+
 	@Override
 	public void deleteProduct(UUID productId) {
 		repository.deleteProduct(productId);

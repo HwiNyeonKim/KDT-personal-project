@@ -1,8 +1,8 @@
 package com.example.cccoffeebackendfromatoz.order.service;
 
-import com.example.cccoffeebackendfromatoz.model.order.Order;
-import com.example.cccoffeebackendfromatoz.model.order.OrderItem;
-import com.example.cccoffeebackendfromatoz.model.order.OrderStatus;
+import com.example.cccoffeebackendfromatoz.order.model.Order;
+import com.example.cccoffeebackendfromatoz.order.model.OrderItem;
+import com.example.cccoffeebackendfromatoz.order.model.OrderStatus;
 
 import java.sql.Timestamp;
 import java.util.List;

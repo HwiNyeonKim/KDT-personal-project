@@ -1,7 +1,7 @@
 package com.example.cccoffeebackendfromatoz.service;
 
-import com.example.cccoffeebackendfromatoz.model.product.Category;
-import com.example.cccoffeebackendfromatoz.model.product.Product;
+import com.example.cccoffeebackendfromatoz.product.model.Category;
+import com.example.cccoffeebackendfromatoz.product.model.Product;
 import com.example.cccoffeebackendfromatoz.product.service.ProductService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;

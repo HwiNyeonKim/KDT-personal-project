@@ -1,4 +1,4 @@
-package com.example.cccoffeebackendfromatoz.model.order;
+package com.example.cccoffeebackendfromatoz.order.model;
 
 public enum OrderStatus {
 	ACCEPTED,

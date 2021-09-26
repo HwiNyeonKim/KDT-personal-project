@@ -1,4 +1,4 @@
-package com.example.cccoffeebackendfromatoz.model.order;
+package com.example.cccoffeebackendfromatoz.order.model;
 
 import com.example.cccoffeebackendfromatoz.utils.ValidationUtils;
 import lombok.Getter;
