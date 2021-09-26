@@ -1,5 +1,6 @@
 package com.example.cccoffeebackendfromatoz.controller.api;
 
+import com.example.cccoffeebackendfromatoz.controller.dto.ChangeProductRequest;
 import com.example.cccoffeebackendfromatoz.controller.dto.CreateProductRequest;
 import com.example.cccoffeebackendfromatoz.product.model.Category;
 import com.example.cccoffeebackendfromatoz.product.model.Product;
@@ -66,6 +67,24 @@ public class ProductRestController {
 				createProductRequest.category(),
 				createProductRequest.price(),
 				createProductRequest.description());
+	}
+
+	// Change Product Info
+	@PatchMapping("/api/v1/products/{productId}")
+	public Product changeProductInfo(@PathVariable("productId") UUID productId, @RequestBody ChangeProductRequest changeProductRequest) {
+		if (changeProductRequest.name().isPresent()) {
+			service.changeName(productId, changeProductRequest.name().get());
+		}
+
+		if (changeProductRequest.price().isPresent()) {
+			service.changePrice(productId, changeProductRequest.price().get());
+		}
+
+		if (changeProductRequest.description().isPresent()) {
+			service.changeDescription(productId, changeProductRequest.description().get());
+		}
+
+		return service.getProductById(productId).get(0);
 	}
 
 	// Delete a product

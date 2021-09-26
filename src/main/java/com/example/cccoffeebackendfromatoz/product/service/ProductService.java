@@ -35,8 +35,32 @@ public interface ProductService {
 
 	// change product info
 	Optional<Product> changeName(Product product, String newName);
+	default Optional<Product> changeName(UUID productId, String newName) {
+		try {
+			Product product = getProductById(productId).get(0);
+			return changeName(product, newName);
+		} catch (IndexOutOfBoundsException e) {
+			throw new RuntimeException("No Such product exists. Please check the product ID. (Given: %s)".formatted(productId.toString()));
+		}
+	}
 	Optional<Product> changePrice(Product product, long newPrice);
+	default Optional<Product> changePrice(UUID productId, long newPrice) {
+		try {
+			Product product = getProductById(productId).get(0);
+			return changePrice(product, newPrice);
+		} catch (IndexOutOfBoundsException e) {
+			throw new RuntimeException("No Such product exists. Please check the product ID. (Given: %s)".formatted(productId.toString()));
+		}
+	}
 	Optional<Product> changeDescription(Product product, String newDescription);
+	default Optional<Product> changeDescription(UUID productId, String newDescription) {
+		try {
+			Product product = getProductById(productId).get(0);
+			return changeDescription(product, newDescription);
+		} catch (IndexOutOfBoundsException e) {
+			throw new RuntimeException("No Such product exists. Please check the product ID. (Given: %s)".formatted(productId.toString()));
+		}
+	}
 
 	// delete a product
 	default void deleteProduct(Product product) {
