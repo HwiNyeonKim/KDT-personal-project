@@ -84,13 +84,14 @@ public class OrderRepositoryImpl implements OrderRepository {
 	}
 
 	@Override
-	public Order updateStatus(Order changedOrder) {
+	public Optional<Order> updateStatus(Order order, OrderStatus orderStatus) {
 		jdbcTemplate.update(SQL_UPDATE_BY_ID.formatted(orderTable, "order_status", "orderStatus", "order_id", "orderId"),
 				Map.of(
-						"orderStatus", changedOrder.getOrderStatus().toString(),
-						"orderId", changedOrder.getOrderId().toString().getBytes()
+						"orderStatus", orderStatus.toString(),
+						"lastModifiedAt", LocalDateTime.now(),
+						"orderId", order.getOrderId().toString().getBytes()
 				));
-		return findById(changedOrder.getOrderId()).stream().findAny().get();
+		return findById(order.getOrderId()).stream().findAny();
 	}
 
 	@Override

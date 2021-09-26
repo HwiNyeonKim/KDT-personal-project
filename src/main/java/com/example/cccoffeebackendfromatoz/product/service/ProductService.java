@@ -5,6 +5,7 @@ import com.example.cccoffeebackendfromatoz.model.product.Product;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface ProductService {
@@ -31,6 +32,11 @@ public interface ProductService {
 	// create a product
 	Product createProduct(String productName, Category category, long price);
 	Product createProduct(String productName, Category category, long price, String description);
+
+	// change product info
+	Optional<Product> changeName(Product product, String newName);
+	Optional<Product> changePrice(Product product, long newPrice);
+	Optional<Product> changeDescription(Product product, String newDescription);
 
 	// delete a product
 	default void deleteProduct(Product product) {

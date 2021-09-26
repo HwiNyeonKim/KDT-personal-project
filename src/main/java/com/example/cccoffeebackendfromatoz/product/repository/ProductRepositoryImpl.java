@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static com.example.cccoffeebackendfromatoz.utils.CommonSQL.*;
@@ -79,6 +80,39 @@ public class ProductRepositoryImpl implements ProductRepository {
 		}
 
 		return product;
+	}
+
+	@Override
+	public Optional<Product> updateName(Product product, String newName) {
+		jdbcTemplate.update(SQL_UPDATE_BY_ID.formatted(productTable, "product_name", "productName", "product_id", "productId"),
+				Map.of(
+						"productName", newName,
+						"lastModifiedAt", LocalDateTime.now(),
+						"productId", product.getProductId().toString().getBytes()
+				));
+		return findById(product.getProductId()).stream().findAny();
+	}
+
+	@Override
+	public Optional<Product> updatePrice(Product product, long newPrice) {
+		jdbcTemplate.update(SQL_UPDATE_BY_ID.formatted(productTable, "price", "newPrice", "product_id", "productId"),
+				Map.of(
+						"newPrice", newPrice,
+						"lastModifiedAt", LocalDateTime.now(),
+						"productId", product.getProductId().toString().getBytes()
+				));
+		return findById(product.getProductId()).stream().findAny();
+	}
+
+	@Override
+	public Optional<Product> updateDescription(Product product, String newDescription) {
+		jdbcTemplate.update(SQL_UPDATE_BY_ID.formatted(productTable, "description", "newDescription", "product_id", "productId"),
+				Map.of(
+						"newDescription", newDescription,
+						"lastModifiedAt", LocalDateTime.now(),
+						"productId", product.getProductId().toString().getBytes()
+				));
+		return findById(product.getProductId()).stream().findAny();
 	}
 
 	@Override

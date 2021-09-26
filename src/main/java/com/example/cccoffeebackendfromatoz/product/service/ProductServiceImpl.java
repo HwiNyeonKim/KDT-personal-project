@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -69,7 +70,21 @@ public class ProductServiceImpl implements ProductService {
 		return repository.insert(product);
 	}
 
+	@Override
+	public Optional<Product> changeName(Product product, String newName) {
+		return repository.updateName(product, newName);
+	}
 
+	@Override
+	public Optional<Product> changePrice(Product product, long newPrice) {
+		return repository.updatePrice(product, newPrice);
+	}
+
+	@Override
+	public Optional<Product> changeDescription(Product product, String newDescription) {
+		return repository.updateDescription(product, newDescription);
+	}
+	
 	@Override
 	public void deleteProduct(UUID productId) {
 		repository.deleteProduct(productId);

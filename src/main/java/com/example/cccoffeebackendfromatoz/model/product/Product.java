@@ -71,10 +71,6 @@ public class Product {
 		this.lastModifiedAt = builder.updatedAt;
 	}
 
-	private void setLastModifiedAt(LocalDateTime updatedAt) {
-		this.lastModifiedAt = updatedAt;
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;

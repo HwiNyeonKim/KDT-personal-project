@@ -91,8 +91,6 @@ public class OrderServiceImpl implements OrderService {
 		}
 
 		// success cancellation.
-		order.setOrderStatus(OrderStatus.CANCELLED);
-		repository.updateStatus(order);
-		return order;
+		return repository.updateStatus(order, OrderStatus.CANCELLED).get();
 	}
 }

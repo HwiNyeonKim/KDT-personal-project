@@ -5,6 +5,7 @@ import com.example.cccoffeebackendfromatoz.model.order.OrderStatus;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface OrderRepository {
@@ -20,7 +21,7 @@ public interface OrderRepository {
 	Order insert(Order order);
 
 	// update order status
-	Order updateStatus(Order changedOrder);
+	Optional<Order> updateStatus(Order changedOrder, OrderStatus orderStatus);
 	// TODO: 주문 정보 변경 기능 추가
 
 	// delete an order
