@@ -61,7 +61,7 @@ public class Product {
 		}
 	}
 
-	public Product(Builder builder) {
+	private Product(Builder builder) {
 		this.productId = builder.productId;
 		this.productName = builder.productName;
 		this.category = builder.category;

@@ -65,7 +65,7 @@ public class Order {
 		}
 	}
 
-	public Order(Builder builder) {
+	private Order(Builder builder) {
 		this.orderId = builder.orderId;
 		this.email = builder.email;
 		this.address = builder.address;
