@@ -34,5 +34,5 @@ public interface OrderService {
 	void deleteAll();
 
 	// cancel order
-	void cancelOrder(Order order);
+	Order cancelOrder(Order order);
 }

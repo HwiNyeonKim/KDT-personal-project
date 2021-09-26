@@ -73,4 +73,10 @@ public class ProductRestController {
 	public void deleteProduct(@PathVariable("productId") UUID productId) {
 		service.deleteProduct(productId);
 	}
+
+	// Delete all product
+	@DeleteMapping("/api/v1/products")
+	public void deleteAll() {
+		service.deleteAll();
+	}
 }

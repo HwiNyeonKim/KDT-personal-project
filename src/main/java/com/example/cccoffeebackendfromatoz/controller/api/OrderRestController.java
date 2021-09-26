@@ -2,7 +2,6 @@ package com.example.cccoffeebackendfromatoz.controller.api;
 
 import com.example.cccoffeebackendfromatoz.controller.dto.CreateOrderRequest;
 import com.example.cccoffeebackendfromatoz.model.order.Order;
-import com.example.cccoffeebackendfromatoz.model.product.Product;
 import com.example.cccoffeebackendfromatoz.order.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,11 +73,12 @@ public class OrderRestController {
 
 	// Cancel an order
 	@DeleteMapping("/api/v1/orders/{orderId}")
-	public void deleteOrder(@PathVariable("orderId") UUID orderId) {
+	public Order deleteOrder(@PathVariable("orderId") UUID orderId) {
 		// 주문 상태만 변경. 내역은 유지
-		List<Order> order = service.getOrderById(orderId);
+		List<Order> foundOrder = service.getOrderById(orderId);
 		try {
-			service.cancelOrder(order.iterator().next());
+			Order order = foundOrder.iterator().next();
+			return service.cancelOrder(order);
 		} catch (NoSuchElementException e) {
 			throw new RuntimeException(
 					MessageFormat.format("There is no such an order. Check Order ID : {}",

@@ -7,6 +7,7 @@ public class CommonSQL {
 	public static final String SQL_SELECT_BY_RANGE_CONDITION = "SELECT * FROM %s WHERE %s BETWEEN :%s and :%s";
 	public static final String SQL_DELETE_BY_ID = "DELETE FROM %s WHERE %s = UUID_TO_BIN(:%s)";
 	public static final String SQL_DELETE_ALL = "DELETE FROM %s";
+	public static final String SQL_UPDATE_BY_ID = "UPDATE %s SET %s = :%s WHERE %s = UUID_TO_BIN(:%s)";
 
 	// for specific domain
 	public static final String SQL_INSERT_PRODUCT =

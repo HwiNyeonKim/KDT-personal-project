@@ -72,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void cancelOrder(Order order) {
+	public Order cancelOrder(Order order) {
 		OrderStatus currentOrderStatus = order.getOrderStatus();
 		if (currentOrderStatus.equals(OrderStatus.CANCELLED)) {
 			throw new RuntimeException(
@@ -92,5 +92,7 @@ public class OrderServiceImpl implements OrderService {
 
 		// success cancellation.
 		order.setOrderStatus(OrderStatus.CANCELLED);
+		repository.updateStatus(order);
+		return order;
 	}
 }
