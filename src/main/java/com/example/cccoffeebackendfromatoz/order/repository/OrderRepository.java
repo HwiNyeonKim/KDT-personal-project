@@ -22,7 +22,6 @@ public interface OrderRepository {
 
 	// update order status
 	Optional<Order> updateStatus(Order changedOrder, OrderStatus orderStatus);
-	// TODO: 주문 정보 변경 기능 추가
 
 	// delete an order
 	void deleteOrder(UUID orderId);
